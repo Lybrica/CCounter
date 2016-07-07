@@ -7,8 +7,24 @@ Gui, Add, Text, x35 y180 w60 h20 , 1h:
 Gui, Add, Text, x35 y210 w60 h20 , 24h:
 Gui, Add, Text, x80 y180 w90 h20 , #
 Gui, Add, Text, x80 y210 w90 h20 , #
+
 Gui, Show, w400 h500, CCounter
-Return
+
+clicks = 0
+
+Loop
+{
+	GetKeyState, lState, LButton
+	if lState = D
+	{
+		KeyWait, LButton, U
+		clicks++
+	}
+	Sleep 1
+}
+
+
+Numpad1::msgbox %clicks%
 
 GuiClose:
 ExitApp
